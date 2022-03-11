@@ -42,17 +42,17 @@ func TestSortIncreasingOrder(t *testing.T) {
 }
 
 func BenchmarkBubbleSort(b *testing.B) {
-	elements := GetElements(10000)
+	elements := GetElements(10)
 
 	for i := 0; i < b.N; i++ {
 		BubbleSort(elements)
 	}
 }
 
-func BenchmarkSort(b *testing.B) {
-	elements := GetElements(10000)
+func BenchmarkBubbleSort100K(b *testing.B) {
+	elements := GetElements(100.000)
 
 	for i := 0; i < b.N; i++ {
-		Sort(elements)
+		BubbleSort(elements)
 	}
 }

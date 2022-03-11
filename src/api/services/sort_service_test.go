@@ -31,14 +31,30 @@ func TestSort(t *testing.T) {
 }
 
 func TestSortMoreThan10000(t *testing.T) {
-	elements := sort.GetElements(10001)
+	elements := sort.GetElements(20001)
 	Sort(elements)
 
 	if elements[0] != 0 {
 		t.Error("First element should be 0. Found", elements[0])
 	}
 
-	if elements[len(elements)-1] != 10000 {
-		t.Error("Last element should be 10000. Found", elements[len(elements)-1])
+	if elements[len(elements)-1] != 20000 {
+		t.Error("Last element should be 20000. Found", elements[len(elements)-1])
+	}
+}
+
+func BenchmarkSort(b *testing.B) {
+	elements := sort.GetElements(10)
+
+	for i := 0; i < b.N; i++ {
+		Sort(elements)
+	}
+}
+
+func BenchmarkSort100K(b *testing.B) {
+	elements := sort.GetElements(100.000)
+
+	for i := 0; i < b.N; i++ {
+		Sort(elements)
 	}
 }
