@@ -1,6 +1,8 @@
 package sort
 
-import "sort"
+import (
+	"sort"
+)
 
 func BubbleSort(elements []int) {
 	keepWorking := true
@@ -19,13 +21,12 @@ func Sort(elements []int) {
 	sort.Ints(elements)
 }
 
-// Create a list of integer to sort
 func GetElements(n int) []int {
-	r := make([]int, n)
+	result := make([]int, n)
 	j := 0
 	for i := n - 1; i > 0; i-- {
-		r[i] = i
+		result[j] = i
 		j++
 	}
-	return r
+	return result
 }

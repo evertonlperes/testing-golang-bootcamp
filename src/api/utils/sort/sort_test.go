@@ -1,44 +1,37 @@
 package sort
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // unit test
-func TestBubbleSortOrder(t *testing.T) {
-	// Init layer (optional) - create a slice of elements (integers)
+func TestBubbleSortOrderIncreasingOrder(t *testing.T) {
+
 	elements := GetElements(10)
-	fmt.Println(elements)
-	// Execution layer - invoking the class under test
+
+	assert.NotNil(t, elements)
+	assert.EqualValues(t, 10, len(elements))
+	assert.EqualValues(t, 9, elements[0])
+	assert.EqualValues(t, 0, elements[len(elements)-1])
+
 	BubbleSort(elements)
 
-	// Validation(s)
-	if elements[0] != 0 {
-		fmt.Println(elements)
-		t.Error("First element to be 0, but found", elements[0])
-	}
+	assert.NotNil(t, elements)
+	assert.EqualValues(t, 10, len(elements))
+	assert.EqualValues(t, 0, elements[0])
+	assert.EqualValues(t, 9, elements[len(elements)-1])
 
-	if elements[len(elements)-1] != 9 {
-		t.Error("Last element should be 9, but found", len(elements)-1)
-	}
 }
 
 func TestSortIncreasingOrder(t *testing.T) {
-	// Init layer (optional) - create a slice of elements (integers)
 	elements := GetElements(10)
 
-	// Execution layer - invoking the class under test
 	Sort(elements)
 
-	// Validation(s)
-	if elements[0] != 0 {
-		t.Error("First element to be 0, but found", elements[0])
-	}
-
-	if elements[len(elements)-1] != 9 {
-		t.Error("Last element should be 9, but found", len(elements)-1)
-	}
+	assert.EqualValues(t, 0, elements[0], "First element should be 0. Found", elements[0])
+	assert.EqualValues(t, 9, elements[len(elements)-1], "Last element should be 9. Found", elements[len(elements)-1])
 }
 
 func BenchmarkBubbleSort(b *testing.B) {
