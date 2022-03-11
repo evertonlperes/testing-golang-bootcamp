@@ -5,9 +5,10 @@ import (
 	"testing"
 )
 
+// unit test
 func TestBubbleSortOrder(t *testing.T) {
 	// Init layer (optional) - create a slice of elements (integers)
-	elements := []int{7, 9, 5, 3, 1, 2, 4, 6, 8, 0}
+	elements := GetElements(10)
 	fmt.Println(elements)
 	// Execution layer - invoking the class under test
 	BubbleSort(elements)
@@ -25,7 +26,7 @@ func TestBubbleSortOrder(t *testing.T) {
 
 func TestSortIncreasingOrder(t *testing.T) {
 	// Init layer (optional) - create a slice of elements (integers)
-	elements := []int{7, 9, 5, 3, 1, 2, 4, 6, 8, 0}
+	elements := GetElements(10)
 
 	// Execution layer - invoking the class under test
 	Sort(elements)
@@ -41,7 +42,7 @@ func TestSortIncreasingOrder(t *testing.T) {
 }
 
 func BenchmarkBubbleSort(b *testing.B) {
-	elements := []int{7, 9, 5, 3, 1, 2, 4, 6, 8, 0}
+	elements := GetElements(10000)
 
 	for i := 0; i < b.N; i++ {
 		BubbleSort(elements)
@@ -49,7 +50,7 @@ func BenchmarkBubbleSort(b *testing.B) {
 }
 
 func BenchmarkSort(b *testing.B) {
-	elements := []int{7, 9, 5, 3, 1, 2, 4, 6, 8, 0}
+	elements := GetElements(10000)
 
 	for i := 0; i < b.N; i++ {
 		Sort(elements)
