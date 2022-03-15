@@ -15,7 +15,7 @@ func TestMain(m *testing.M) {
 }
 
 func TestGetCountryNotFound(t *testing.T) {
-	rest.FlushMockups()
+	rest.FlushMockups() // Works like a teardown before start the mocks
 	rest.AddMockups(&rest.Mock{
 		URL:          "https://api.mercadolibre.com/countries/CA",
 		HTTPMethod:   http.MethodGet,
